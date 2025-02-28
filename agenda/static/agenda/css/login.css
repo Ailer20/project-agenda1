@@ -1,60 +1,130 @@
-body{
-    background: linear-gradient(90deg, rgba(224,224,224,1) 0%, rgba(223,223,223,1) 35%, rgba(210,210,210,1) 100% );
+/* Reset padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
-/* Estilo para o container principal (login e registro) */
+
+/* Corpo da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #cccccc;
+}
+
+/* Container principal */
 .login-container {
-    width: 100%;
-    max-width: 400px;
-    background: linear-gradient(135deg, #00122a, #003d73);
+    display: flex;
+    width: 900px;
+    height: 500px;
+    background-color: #13131a;
     border-radius: 10px;
-
+    box-shadow: 0px 4px 10px rgba(13, 0, 255, 0.2);
+    overflow: hidden;
 }
 
-/* Título centralizado */
-.login-container h2{
-    color: #ffc107;
-    font-size: 17px;
-    margin-top: 5px;
-}
-.login-container label{
-    color: #ffc107;
+/* Lado esquerdo (fundo decorativo) */
+
+/* Lado esquerdo (fundo decorativo) */
+.left-side {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0a0078 30%, #1b0eae 80%); /* Gradiente linear de roxo para azul */
 }
 
-/* Estilo dos campos de entrada */
-input[type="text"],
-input[type="password"] {
+
+/* Canvas para animação Lottie */
+#dotlottie-canvas {
+    width: 100%; /* Ocupa toda a largura do container */
+    height: 100%; /* Ocupa toda a altura do container */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Lado direito (formulário) */
+.right-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    Color: #E3B329;
+    background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
+    padding: 30px;
+}
+
+/* Título do login */
+.login-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #E3B329;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+}
+
+/* Estilização dos campos de input */
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group input {
     width: 100%;
     padding: 10px;
-    margin-bottom: 15px;
     border: none;
-    border-radius: 5px;
-    background: #fff;
-    color: #333;
-}
-
-/* Botão de submit */
-button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background: linear-gradient(135deg, #ffc107, #ff9800);
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
+    border-bottom: 2px solid #888;
+    background: transparent;
+    color: #E3B329;
     font-size: 16px;
-    transition: transform 0.3s ease;
+    outline: none;
 }
 
-button[type="submit"]:hover {
-    transform: scale(1.05);
+.input-group label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    pointer-events: none;
+    transition: 0.3s ease;
 }
 
-/* Estilo para mensagens de erro */
-.error {
-    color: #ff4d4d;
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 5px;
+/* Efeito quando o usuário digita */
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: 0;
+    font-size: 12px;
+    color: #000000;
 }
 
-    
+/* Botão de login */
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3d4af0;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.login-button:hover {
+    background-color: #1b2bd4;
+}

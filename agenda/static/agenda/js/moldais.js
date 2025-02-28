@@ -39,8 +39,14 @@ function mostrarMotivo(motivo) {
 }
 
 function fecharModal() {
-    document.getElementById('modalRejeicao').style.display = 'none';
-    
+    const modalRejeicao = document.getElementById('modalRejeicao');
+    const modalMotivo = document.getElementById('modalMotivo');
 
-    document.getElementById('modalMotivo').style.display = 'none';
+    if (modalRejeicao) {
+        modalRejeicao.style.display = 'none';
+    }
+
+    if (modalMotivo) {
+        modalMotivo.style.display = 'none';
+    }
 }

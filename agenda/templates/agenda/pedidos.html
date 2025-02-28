@@ -62,7 +62,13 @@
                                         {% elif reuniao.status == 'rejeitado' %} bg-danger 
                                         {% else %} bg-warning 
                                         {% endif %}">
-                                        {{ reuniao.status }}
+                                        {% if reuniao.status == 'aprovado' %}
+                                            Aprovado
+                                        {% elif reuniao.status == 'rejeitado' %}
+                                        Negado
+                                            {% else %}
+                                        Pendente
+                                        {% endif %}
                                     </span>
                             
                                     {% if reuniao.status == 'rejeitado' %}
@@ -93,7 +99,7 @@
             <div class="modal-content" style="background: white; padding: 20px; border-radius: 8px; width: 400px;">
                 <h4>Motivo:</h4>
                 <p id="motivoTexto"></p>
-                <button onclick="fecharModal()" class="btn btn-secondary">Fechar</button>
+                <button type="button" class="btn btn-secondary" onclick="fecharModal('modalMotivo')">Fechar</button>
             </div>
         </div>
         <script src="{% static 'agenda/js/animacao.js' %}"></script>

@@ -133,3 +133,15 @@ ALLOWED_HOSTS = [
     'localhost',       
     '127.0.0.1'
 ]
+# Configurações para arquivos estáticos
+STATIC_URL = '/static/'
+
+# Diretórios adicionais para arquivos estáticos (caso esteja em outro local)
+STATICFILES_DIRS = [
+    BASE_DIR / 'agenda/static',  # Ajuste o caminho se necessário
+]
+
+# Diretório onde os arquivos estáticos serão coletados em produção
+# STATIC_ROOT é necessário apenas para produção, no desenvolvimento não precisa
+# STATIC_ROOT = BASE_DIR / 'staticfiles' 
+
