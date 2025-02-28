@@ -39,5 +39,8 @@ function mostrarMotivo(motivo) {
 }
 
 function fecharModal() {
+    document.getElementById('modalRejeicao').style.display = 'none';
+    
+
     document.getElementById('modalMotivo').style.display = 'none';
 }

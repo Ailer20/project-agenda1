@@ -4,16 +4,33 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from ..models import Reuniao
+from ..forms import ReuniaoForm
 
 # View para carregar as funções da tela Home (lider)
-@login_required
+@login_required 
 def home_lider(request):
-    # Verifica se o tipo de usuario é 'lider'. Caso não, é redirecionado para o login
+    # Verifica se o tipo de usuário é 'lider'. Caso contrário, redireciona para o login
     if request.user.role != 'lider':
-        return redirect('login')  
+        return redirect('login')
+
     reunioes = Reuniao.objects.filter(Q(status='aprovado') | Q(criado_por=request.user))
-    
-    return render(request, "agenda/home_lider.html", {"reunioes": reunioes})
+
+    if request.method == 'POST':
+        form = ReuniaoForm(request.POST)
+        if form.is_valid():
+            reuniao = form.save(commit=False)
+            reuniao.criado_por = request.user
+            reuniao.status = 'aprovado'  # Status aprovado automaticamente para líderes
+            reuniao.save()
+            reuniao.colaboradores.set(form.cleaned_data['colaboradores'])
+            reuniao.colaboradores.add(request.user)
+
+            messages.success(request, "Reunião aprovada e cadastrada com sucesso!")
+            return redirect('home_lider')
+    else:
+        form = ReuniaoForm(user=request.user)
+
+    return render(request, "agenda/home_lider.html", {"form": form, "reunioes": reunioes})
 
 #View para carregar as funções da tela pedidos (lider)
 @login_required
